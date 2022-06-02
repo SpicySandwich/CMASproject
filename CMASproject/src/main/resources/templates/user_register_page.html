@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+
+
+<style>
+                 
+body {
+font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+input[type=text], input[type=password]{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 10px 15px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 12%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+
+
+img.avatar {
+  width: 20%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+body {
+font-family: Arial, Helvetica, sans-serif;
+background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; 
+  border: 1px solid #888;
+  width: 50%; 
+}
+
+
+
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 20%;
+  }
+}
+.date{
+
+ width: 97%;
+ padding: 12px;
+  border: 1px solid #888;
+}
+.emailto{
+
+  width: 97%;
+ padding: 12px;
+  border: 1px solid #888; 
+}
+.error{
+
+  color: red;
+}
+
+#cars {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+select::-ms-expand {
+   display: none;
+}
+</style>
+
+<meta charset="ISO-8859-1">
+<title>Updating Data</title>
+
+</head>
+<body>
+
+<div id="get" class="modal">
+
+  
+  <form class="modal-content animate" action = "#" th:action = "@{/register_action_process_user}" th:object="${customer}" method="POST" >
+
+    <div class="imgcontainer">
+
+      <span onclick="document.getElementById('get').style.display='none'" class="close" title="Close Modal"></span>
+
+      <img th:src="@{/img/rating.png}" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container" >
+      
+         <label for="psw"><b>Email</b></label>
+     <input type="email" th:field="*{email}" class="emailto" autocomplete="off"/>
+        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" th:errorclass = "error" ></p>
+        
+      <label for="psw"><b>Password</b></label>
+     <input type="password" th:field="*{password}" class="emailto" autocomplete="off" />
+        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" th:errorclass = "error" ></p>
+        
+         <label for="psw"><b>Firstname</b></label>
+     <input type="text" th:field="*{firstname}" class="emailto" autocomplete="off"/>
+        <p th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}" th:errorclass = "error"></p>
+        
+          <label for="psw"><b>Lastname</b></label>
+     <input type="text" th:field="*{lastname}" class="emailto" autocomplete="off"/>
+        <p th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}" th:errorclass = "error"></p>
+        
+           <label for="psw"><b>Date of Birth</b></label>
+     <input type="date" th:field="*{dateofbirth}" class="emailto" autocomplete="off" />
+        <p th:if="${#fields.hasErrors('dateofbirth')}" th:errors="*{dateofbirth}" th:errorclass = "error"></p>
+        
+           <label for="psw"><b>Address</b></label>
+     <input type="text" th:field="*{address}" class="emailto" autocomplete="off"/>
+        <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}" th:errorclass = "error" ></p>
+        
+    
+      <select name="cars" class="emailto" th:field = "*{fk_role_id}" autocomplete="off" required>
+  <option value="2">2</option>
+ 
+</select>
+
+      <button type="submit">Submit</button>
+      
+
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button"  class="cancelbtn"><a th:href = "@{/lazardo.com}"/>Cancel</button>
+      
+      
+    </div>
+  </form>
+</div>
+
+
+</body>
+</html>

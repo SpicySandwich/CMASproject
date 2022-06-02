@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+
+<style>
+
+
+h1{
+font-size: 30px;
+color: #fff;
+text-transform: uppercase;
+font-weight: 300;
+text-align: center;
+margin-bottom: 15px;
+}
+table{
+width:100%;
+table-layout: fixed;
+}
+.tbl-header{
+background-color: rgba(255,255,255,0.3);
+}
+.tbl-content{
+height:300px;
+overflow-x:auto;
+margin-top: 0px;
+border: 1px solid rgba(255,255,255,0.3);
+}
+th{
+padding: 20px 15px;
+text-align: left;
+font-weight: 500;
+font-size: 12px;
+color: #fff;
+text-transform: uppercase;
+}
+td{
+padding: 5px;
+text-align: left;
+vertical-align:middle;
+font-weight: 300;
+font-size: 12px;
+color: #fff;
+border-bottom: solid 1px rgba(255,255,255,0.1);
+}
+
+
+/* demo styles */
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+body{
+background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+background: linear-gradient(to right, #2D2D39, #2D2D39);
+font-family: 'Roboto', sans-serif;
+}
+section{
+margin: 50px;
+}
+
+
+
+
+
+
+
+::-webkit-scrollbar {
+width: 6px;
+} 
+::-webkit-scrollbar-track {
+-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+} 
+::-webkit-scrollbar-thumb {
+-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
+
+.btn1{
+
+                 background-color: #ff6347;  
+                               
+}
+
+.btn2{
+                 
+                 background-color: #1e90ff;                
+}
+#image{
+
+    padding-left: 45px;
+}
+#image2{
+
+  padding: 0;
+}
+.home{
+
+    float: left;
+    padding-left: 55px;
+   
+   
+}
+.role:after {
+  content: " Role";
+}
+</style>
+
+<script type="text/javascript">
+$(window).on("load resize ", function() {
+var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
+$('.tbl-header').css({'padding-right':scrollWidth});
+}).resize();
+
+
+</script>
+</head>
+<body>
+<a href="#" th:href = "@{/admin.com}" ><img th:src="@{/img/home-button.png}" class= "home"/></a>
+
+<section>
+
+                 <h1 class="welcome">
+
+                                  Welcome <b>[[${#request.userPrincipal.principal.FullName}]]</b>
+                               
+                                </h1>
+<div class="tbl-header">
+<table cellpadding="0" cellspacing="0" border="0">
+<thead>
+<tr>
+<th>User ID</th>
+<th>Email</th>
+<th>Firstname</th>
+<th>lastname</th>
+<th>Date of Birth</th>
+<th>Address</th>
+<th>[1] Admin <br>[2] Customer</th>
+<th>Delete </th>
+<th>Update </th>
+</tr>
+</thead>
+</table>
+</div>
+
+<div class="tbl-content">
+  
+      
+<table cellpadding="0" cellspacing="0" border="0">
+  
+<tbody>
+<tr>
+                 <tr th:each="customers: ${listcustomer}">
+                 <td th:text="${customers.id}">User ID</td>
+                 <td th:text="${customers.email}">Email</td>
+                 <td th:text="${customers.firstname}">Firstname</td>
+                 <td th:text="${customers.lastname}">lastname</td>
+                 <td th:text="${customers.dateofbirth}">lastname</td>
+                 <td th:text="${customers.address}">lastname</td>
+                  <td class="role" th:text="${customers.fk_role_id}">Role</td>
+
+           <td > 
+             
+             <a th:href="@{/deletedata/{id}(id=${customers.id})}"> 
+              
+         <input type="image" id="image2" 
+      th:src="@{/img/delete.png}">
+          
+        
+        <td >  
+          
+          <a th:href="@{/updatecustomerform/{id}(id=${customers.id})}" > 
+           
+       
+            <input type="image" id="image2" th:src="@{/img/system-update.png}">
+                                  </tr>
+
+</tbody>
+</table>
+
+</div>
+</section>
+
+<form  th:action="@{/logout}" method="post">
+
+
+ <div>
+    
+                <input type="image" id="image"
+      th:src="@{/img/power.png}">
+                
+                 </div>
+                 </form>
+
+
+</body>
+</html>

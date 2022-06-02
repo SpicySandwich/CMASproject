@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>LAZARDO</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <style>
+  
+  .navbar-brand{
+
+	   
+  background-image: linear-gradient(
+    -225deg,
+    #ED553B 0%,
+    #F6D55C 29%,
+    #3CAEA3 67%,
+    #20639B 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 20% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      font-size: 20px;
+}
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+.backimg{
+
+  position: absolute; 
+  /*position: relative;
+  //position: fixed;*/
+  left: 0px;
+  top: 0px;
+  z-index: -1;
+}
+.backimg{
+width: 100%;
+height: 100%;
+  margin: 0;
+}
+  
+  </style>
+</head>
+<body>
+ 
+<nav class="navbar navbar-inverse">
+	
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Welcome Customer to LAZARDO</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+    
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"  th:href = "@{register_action_user}"> <span ></span> Sign Up <img th:src="@{/img/good.png}"/></a></li>
+        <li><a href="#"  th:href = "@{login}"><span ></span> Login <img th:src="@{/img/locksmith.png}"/></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  <img class = "backimg" th:src="@{/img/userbackground.jpg}" alt=""  >
+
+
+</body>
+</html>
